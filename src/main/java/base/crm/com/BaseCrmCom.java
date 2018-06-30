@@ -26,13 +26,13 @@ public class BaseCrmCom {
 		properties.load(file);
 	}
 	
-	public static void Initilation(String browser){
+	public static void Initilation(){
 		
-		if(browser.equals("chrome")){
+		if(properties.getProperty("brower").equals("chrome")){
 			System.setProperty("driver.chrome.driver", "chromedriver.exe");
 			driver = new ChromeDriver();			
 		}
-		else if(browser.equals("IE")){
+		else if(properties.getProperty("brower").equals("IE")){
 			System.setProperty("driver.ie.driver", "IEDriver.exe");
 			driver = new InternetExplorerDriver();
 		}
@@ -43,9 +43,9 @@ public class BaseCrmCom {
 		
 	}
 	
-	public static void setup(String Url){
+	public static void setup(){
 		driver.manage().window().maximize();
-		driver.get(Url);
+		driver.get(properties.getProperty("Url"));
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);		
 		driver.manage().deleteAllCookies();		
